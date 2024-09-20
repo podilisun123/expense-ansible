@@ -1,6 +1,10 @@
 - name: configure db server
   hosts: db
   become: yes
+  vars_prompt:
+  - name: DB-PASSWORD
+    prompt: enter db password
+    private: false
   tasks:
   - name: install mysql server
     ansible.builtin.dnf:
@@ -11,4 +15,14 @@
     ansible.builtin.service:
       name: mysqld
       state: restarted
-      enables: yes
+      enabled: yes
+
+  - name: connection database
+    community.mysql.mysql_info:
+      login_user: root
+      login_password: {{DB-PASSWORD}}
+      ignored_errors: yes
+      register: db-info
+  - name: print db information
+    ansible.builtin.debug:
+      msg: "db info is : {{db-info}}"
