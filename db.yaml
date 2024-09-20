@@ -20,7 +20,7 @@
   - name: connection database
     community.mysql.mysql_info:
       login_user: root
-      login_password: {{DB-PASSWORD}}
+      login_password: "{{ DB-PASSWORD }}"
       ignored_errors: yes
       register: db-info
   - name: print db information
