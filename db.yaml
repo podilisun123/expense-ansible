@@ -21,8 +21,9 @@
     community.mysql.mysql_info:
       login_user: root
       login_password: "{{ DB_PASSWORD }}"
+      ignored_errors: yes
     register: db_info
-    ignored_errors: yes
+    
 
   - name: print db information
     ansible.builtin.debug:
