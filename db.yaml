@@ -2,7 +2,7 @@
   hosts: db
   become: yes
   vars_prompt:
-  - name: DB-PASSWORD
+  - name: DB_PASSWORD
     prompt: enter db password
     private: false
   tasks:
@@ -20,9 +20,10 @@
   - name: connection database
     community.mysql.mysql_info:
       login_user: root
-      login_password: "{{ DB-PASSWORD }}"
-      ignored_errors: yes
-      register: db-info
+      login_password: "{{ DB_PASSWORD }}"
+      register: db_info
+    ignored_errors: yes
+    
   - name: print db information
     ansible.builtin.debug:
-      msg: "db info is : {{db-info}}"
+      msg: "db info is : {{db_info}}"
