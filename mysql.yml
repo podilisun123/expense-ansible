@@ -1,6 +1,6 @@
 - name : configure mysql server
-  hosts: db
   become: yes
+  hosts: db
   vars:
     mysql_host: 172.31.36.114
   vars_prompt:
