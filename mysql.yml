@@ -18,3 +18,20 @@
       name: mysqld
       state: restarted
       enabled: yes
+
+  - name: install python mysql dependencies
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      - cryptography
+      executable: pip3.9
+
+  - name: conncetion data base
+    community.mysql.mysql_db:
+      name: mysql connection
+      login_user: root
+      login_password: "{{ mysql_pwd }}"
+      login_host: "{{ login_host }}"
+    ignore_errors: yes
+    register: mysql_info
+    
