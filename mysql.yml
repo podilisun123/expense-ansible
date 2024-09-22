@@ -27,8 +27,7 @@
       executable: pip3.9
 
   - name: conncetion data base
-    community.mysql.mysql_db:
-      name: mysql connection
+    community.mysql.mysql_info:
       login_user: root
       login_password: "{{ mysql_pwd }}"
       login_host: "{{ login_host }}"
