@@ -28,10 +28,10 @@
       executable: pip3.9 
 
   - name: login mysql server
-    community.mysql.mysql_db:
-      name: mysql connection
+    community.mysql.mysql_info:
       login_user: root
       login_password: "{{ mysql_password }}"
+      filter: version
     ignore_errors: true 
     register: mysql_info
   
@@ -39,6 +39,6 @@
     ansible.builtin.debug:
       msg: "the my sql infor is {{ mysql_info }}"
 
-  - name: set root password
-    ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
-    when: mysql_info.failed is false
+  # - name: set root password
+  #   ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
+  #   when: mysql_info.failed is false
