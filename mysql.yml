@@ -22,6 +22,7 @@
   
   - name: login mysql server
     community.mysql.mysql_db:
+      name: connect to mysql
       login_user: root
       login_password: "{{ mysql_password }}"
       login_host: mysql_host
