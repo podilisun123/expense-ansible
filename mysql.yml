@@ -7,7 +7,7 @@
     name: mysql_pwd
     prompt: enter mysql password
     private: no
-  
+  tasks:
   - name: install mysql server
     ansible.builtin.dnf:
       name: mysql-server
