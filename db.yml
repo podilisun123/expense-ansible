@@ -4,7 +4,7 @@
   vars:
     db_host: 172.31.94.148
   vars_prompt:
-    name: mysql-pwd
+    name: mysql_pwd
     prompt: enter mysql password
     private: no
   tasks: 
@@ -28,7 +28,7 @@
   - name: connect to database
     community.mysql.mysql_info:
       login_user: root
-      login_password: "{{ mysql-pwd }}"
+      login_password: "{{ mysql_pwd }}"
       login_host: "{{ db_host }}"
       filter: version
     ignore_errors: yes
