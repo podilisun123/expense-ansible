@@ -52,6 +52,13 @@
       name: mysql
       state: installed
 
+  - name: install python mysql dependencies
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      - cryptography
+      executable: pip3.9
+
   - name: connect mysql server
     community.mysql.mysql_db:
       name: backend
