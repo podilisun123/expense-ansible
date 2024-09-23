@@ -1,6 +1,9 @@
 - name: configure application server
   hosts: app
   become: yes
+  vars:
+    db_host: 172.31.85.36
+    db_password: ExpenseApp@1
   tasks:
   - name: default nodejs mdoule disabled
     ansible.builtin.command: dnf module disable nodejs -y
@@ -44,3 +47,21 @@
       src: backend.service
       dest: /app
      # remote_src: yes
+  - name: install mysql server
+    ansible.builtin.dnf:
+      name: mysql
+      state: installed
+
+  - name: connect mysql server
+    community.mysql.mysql_db:
+      name: backend
+      login_user: root
+      login_password: "{{ db_password }}"
+      login_host: "{{ db_password }}"
+      state: import
+      target: /app/schema/backend.sql
+
+  - name: start the backend service
+    ansible.builtin.service:
+      name: backend
+      state: restarted
