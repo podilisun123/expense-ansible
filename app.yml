@@ -1,6 +1,6 @@
 - name: configure application server
-  hosts: app
   become: yes
+  hosts: app
   vars:
     db_password: ExpenseApp@1
     db_host: 172.31.85.36
