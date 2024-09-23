@@ -2,8 +2,8 @@
   hosts: app
   become: yes
   vars:
-    db_host: 172.31.85.36
     db_password: ExpenseApp@1
+    db_host: 172.31.85.36
   tasks:
   - name: default nodejs mdoule disabled
     ansible.builtin.command: dnf module disable nodejs -y
