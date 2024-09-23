@@ -18,12 +18,12 @@
       name: mysqld
       state: started
       enabled: yes
-  # - name: install python mysql dependencies
-  #   ansible.builtin.pip:
-  #     name:
-  #     - MyS
-  #     - cryptography
-  #     executable: pip3.9
+  - name: install python mysql dependencies
+    ansible.builtin.pip:
+      name:
+      - PyMySQL
+      - cryptography
+      executable: pip3.9
   
   - name: connect to database
     community.mysql.mysql_info:
@@ -37,4 +37,8 @@
   - name: print data base info
     ansible.builtin.debug:
       msg: "output is : {{ db_info }}"
+
+  - name: set db root password
+    ansible.builtin.command: " mysql_secure_installation --set-root-pass {{ mysql_pwd }} "
+    when: db_info.failed is true
   
