@@ -2,7 +2,7 @@
   hosts: db
   become: yes
   vars:
-    db_host: 172.31.94.148
+    db_host: 172.31.31.225
   vars_prompt:
     name: mysql_pwd
     prompt: enter mysql password
