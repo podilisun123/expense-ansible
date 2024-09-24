@@ -32,7 +32,7 @@
   - name: download and unzip the backend code
     ansible.builtin.unarchive:
       src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-      dest: /tmp/backend.zip
+      dest: /tmp
       remote_src: yes
 
   - name: install backend dependencies
