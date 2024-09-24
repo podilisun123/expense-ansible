@@ -36,7 +36,7 @@
       remote_src: yes
 
   - name: install backend dependencies
-    ansible.builtin.command: npm install
+    ansible.builtin.command: "npm install" 
     args:
       chdir: /app
 
