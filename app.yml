@@ -6,10 +6,10 @@
     mysql_host: 172.31.46.229
   tasks:
   - name: disable default module in node js
-    ansible.builtin.commanad: dnf module disable nodejs -y 
+    ansible.builtin.command: dnf module disable nodejs -y 
 
   - name: enable latest module in node js
-    ansible.builtin.commanad: dnf module enable  nodejs:20 -y 
+    ansible.builtin.command: dnf module enable  nodejs:20 -y 
 
   - name: install node js
     ansible.builtin.dnf:
