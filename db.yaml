@@ -1,4 +1,4 @@
-- name: configure DB servers
+- name: configure DB server
   hosts: db 
   become: yes
   tasks:
