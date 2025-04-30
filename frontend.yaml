@@ -12,4 +12,5 @@
       name: nginx
       state: started
       enabled: yes
-  
+  - name : remove existing default code
+    ansible.builtin.command: rm -rf /usr/share/nginx/html
