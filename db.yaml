@@ -3,6 +3,7 @@
   vars:
     login_user: root
     login_password: ExpenseApp@1
+    login_host: db.sundardev.online
   become: yes
   tasks:
   - name: install mysql server
@@ -15,11 +16,18 @@
       name: mysqld
       state: started
       enabled: yes
-  - name: connect mysql server
-    community.mysql.mysql_db:
-      name: mysql
-      login_user: "{{ login_user }}"
+  - name: install mysql python dependencies
+    ansible.builtin.pip:
+    name:
+    - PyMySQL
+    - cryptography
+    executable: pip3.9
+  - name: connect DB server
+    community.mysql.mysql_info:
+      login_user: root
       login_password: "{{ login_password }}"
+      login_host: "{{ login_host }}"
+    filter: version
     ignore_errors: yes
     register : mysql_info
 
