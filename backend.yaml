@@ -20,12 +20,10 @@
     ansible.builtin.file:
       path: /app
       state: directory
-      args:
-        chdir: /app
-  
+        
   - name: download the code and unzip
     ansible.builtin.unarchive:
       src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-      dest: /tmp/backend.zip
+      dest: /app
       remote_src: yes
       
