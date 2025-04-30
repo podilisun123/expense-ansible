@@ -17,8 +17,8 @@
       enabled: yes
   - name: connect mysql server
     community.mysql.mysql_db:
-      login_user: {{ login_user }}
-      login_password: {{ login_password }}
+      login_user: "{{ login_user }}"
+      login_password: "{{ login_password }}"
     ignore_errors: yes
     register : mysql_info
 
