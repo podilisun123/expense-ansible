@@ -31,7 +31,7 @@
       login_host: "{{ login_host }}"
       filter: version
     ignore_errors: yes
-    register : mysql_info
+    register: mysql_info
 
   - name: print mysql mysql_info
     ansible.builtin.debug:
@@ -40,7 +40,7 @@
   - name: set to mysql root password
     ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ login_password}}"
     when: mysql_info.failed is true
-    
+
 
     
     
